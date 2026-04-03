@@ -5,7 +5,7 @@
 -->During disasters, relief distribution often lacks coordination, leading to delays, resource wastage, and unmet needs.
 
 🎯 Objective:
-*To build a user-friendly system that helps:
+-->To build a user-friendly system that helps:
 	•	Report disasters quickly
 	•	Request help efficiently
 	•	Manage relief resources
