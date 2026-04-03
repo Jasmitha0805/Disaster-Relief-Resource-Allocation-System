@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReliefSystem | Disaster Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="loader"></div>
+        <p>Initializing ReliefSystem...</p>
+    </div>
+
+    <section id="authGate" class="auth-gate hidden">
+        <div class="auth-card glass">
+            <div class="auth-head">
+                <h2><i class="fa-solid fa-user-shield"></i> ReliefSystem Access</h2>
+                <p>Sign in to continue or create a secure account.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button id="loginTab" class="auth-tab active" type="button">Login</button>
+                <button id="signupTab" class="auth-tab" type="button">Sign Up</button>
+            </div>
+
+            <form id="loginForm" class="auth-form" novalidate>
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="you@example.com">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                    </div>
+                </div>
+                <small id="loginError" class="error-message"></small>
+                <button type="submit" class="btn btn-primary auth-submit">Login</button>
+            </form>
+
+            <form id="signupForm" class="auth-form hidden" novalidate>
+                <div class="input-group">
+                    <label for="signupName">Full Name</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="signupName" placeholder="Your full name">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="signupEmail">Email</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="you@example.com">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword">Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" id="signupPassword" placeholder="At least 6 characters">
+                    </div>
+                </div>
+                <small id="signupError" class="error-message"></small>
+                <button type="submit" class="btn btn-primary auth-submit">Create Account</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="appShell" class="app-shell hidden">
+        <aside class="sidebar glass">
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <div>
+                    <h1>
+                        <svg class="brand-title-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 2l7 3v6c0 5-3.4 9.3-7 11-3.6-1.7-7-6-7-11V5l7-3z" fill="#8dd3ff"></path>
+                            <path d="M9.3 12.3l1.8 1.8 3.8-3.8" stroke="#0e2b4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ReliefSystem
+                    </h1>
+                    <p>Emergency Coordination</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-page="home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" data-page="report">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Report Disaster</span>
+                </button>
+                <button class="nav-btn" data-page="request">
+                    <i class="fa-solid fa-hand-holding-medical"></i>
+                    <span>Request Help</span>
+                </button>
+                <button class="nav-btn" data-page="dashboard">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <button id="logoutBtn" class="theme-toggle" aria-label="Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <section id="home" class="page active">
+                <div class="hero glass">
+                    <div class="hero-content">
+                        <span class="badge"><i class="fa-solid fa-satellite-dish"></i> National Emergency Intelligence Grid</span>
+                        <h2>Preparedness Through Real-Time Coordination</h2>
+                        <p>ReliefSystem helps authorities collect incidents, prioritize humanitarian needs, and mobilize resources with speed and precision.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" data-page-target="report">Report Incident</button>
+                            <button class="btn btn-secondary" data-page-target="dashboard">Open Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card glass reveal-up">
+                        <div class="feature-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                        <h3>Real-time Monitoring</h3>
+                        <p>Track field reports instantly and identify hotspots for faster intervention planning.</p>
+                    </article>
+                    <article class="feature-card glass reveal-up">
+                        <div class="feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <h3>Resource Allocation</h3>
+                        <p>Prioritize food, water, shelter, and medical resources based on urgency and impact.</p>
+                    </article>
+                    <article class="feature-card glass reveal-up">
+                        <div class="feature-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                        <h3>Emergency Response</h3>
+                        <p>Support coordinated action among teams with a clear view of requests and active cases.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="report" class="page">
+                <div class="form-card glass">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-triangle-exclamation"></i> Report Disaster</h2>
+                        <p>Submit verified incident data for immediate response planning.</p>
+                    </div>
+
+                    <form id="reportForm" novalidate>
+                        <div class="input-group">
+                            <label for="location">Location</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <input type="text" id="location" name="location" placeholder="District / City / Region">
+                            </div>
+                            <small class="error-message" id="locationError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="type">Disaster Type</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-cloud-bolt"></i>
+                                <input type="text" id="type" name="type" placeholder="Flood, Earthquake, Fire...">
+                            </div>
+                            <small class="error-message" id="typeError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="details">Incident Details</label>
+                            <div class="input-wrap textarea-wrap">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <textarea id="details" name="details" rows="4" placeholder="Describe severity, affected population, and immediate risks"></textarea>
+                            </div>
+                            <small class="error-message" id="detailsError"></small>
+                        </div>
+
+                        <button class="btn btn-primary submit-btn" type="submit">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Submit Report
+                        </button>
+                        <p class="success-message" id="reportSuccess">Report submitted successfully.</p>
+                    </form>
+                </div>
+            </section>
+
+            <section id="request" class="page">
+                <div class="form-card glass">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-hand-holding-medical"></i> Request Help</h2>
+                        <p>Register community assistance requirements for rapid relief delivery.</p>
+                    </div>
+
+                    <form id="helpForm" novalidate>
+                        <div class="input-group">
+                            <label for="name">Contact Name</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Name of focal person">
+                            </div>
+                            <small class="error-message" id="nameError"></small>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="resourceType">Resource Type</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-kit-medical"></i>
+                                    <select id="resourceType" name="resourceType">
+                                        <option value="">Select resource</option>
+                                        <option value="Food">Food</option>
+                                        <option value="Water">Water</option>
+                                        <option value="Medical">Medical</option>
+                                        <option value="Shelter">Shelter</option>
+                                    </select>
+                                </div>
+                                <small class="error-message" id="resourceTypeError"></small>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="priority">Priority</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                    <select id="priority" name="priority">
+                                        <option value="">Select priority</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                                <small class="error-message" id="priorityError"></small>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="need">Specific Need</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <input type="text" id="need" name="need" placeholder="e.g., 200 food kits, 50 blankets">
+                            </div>
+                            <small class="error-message" id="needError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="area">Affected Area</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <input type="text" id="area" name="area" placeholder="Ward / District">
+                            </div>
+                            <small class="error-message" id="areaError"></small>
+                        </div>
+
+                        <button class="btn btn-primary submit-btn" type="submit">
+                            <i class="fa-solid fa-bell"></i>
+                            Submit Request
+                        </button>
+                        <p class="success-message" id="helpSuccess">Help request submitted successfully.</p>
+                    </form>
+                </div>
+            </section>
+
+            <section id="dashboard" class="page">
+                <div class="section-header dashboard-head">
+                    <h2><i class="fa-solid fa-chart-line"></i> Operations Dashboard</h2>
+                    <p>Track reports, requests, and active cases from one control center.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card glass">
+                        <p>Total Reports</p>
+                        <h3 id="totalReports">0</h3>
+                    </article>
+                    <article class="stat-card glass">
+                        <p>Total Requests</p>
+                        <h3 id="totalRequests">0</h3>
+                    </article>
+                    <article class="stat-card glass">
+                        <p>Active Cases</p>
+                        <h3 id="activeCases">0</h3>
+                    </article>
+                </div>
+
+                <div class="dashboard-grid">
+                    <article class="chart-card glass">
+                        <div class="chart-stack">
+                            <section class="chart-panel">
+                                <h3>Resource Request Overview</h3>
+                                <canvas id="requestChart" height="220"></canvas>
+                            </section>
+                            <section class="chart-panel">
+                                <h3>Disaster Reports Overview</h3>
+                                <canvas id="reportChart" height="220"></canvas>
+                            </section>
+                        </div>
+                    </article>
+
+                    <article class="list-card glass">
+                        <div class="list-header">
+                            <h3>Field Updates</h3>
+                            <select id="dashboardFilter">
+                                <option value="all">All Priorities</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+                        <div id="emptyState" class="empty-state hidden">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <p>No reports or requests available yet.</p>
+                        </div>
+
+                        <div id="dataContainer" class="data-feed"></div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
